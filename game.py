@@ -1,10 +1,12 @@
-# --- Global Variables --- #
-board = ['-', '-', '-', '-', '-', '-', '-', '-', '-']
+# --- Global Variables --- 
+board = ['-', '-', '-',
+         '-', '-', '-',
+         '-', '-', '-']
 game_running = True
 winner = None
 
-# Whos turn is it
-current_player = 'X'
+# Who's turn is it (by default its O's turn look below).
+current_player = 'O'
 
 
 def display_board():
@@ -18,21 +20,20 @@ def handle_turn(current_player):
     position = int(input('Choose a position from 1 to 9: ')) - 1
 
     if position not in [number for number in range(0, 9)]:
-        position = int(
-            input('Invalid input, please choose a position from 1 to 9: ')) - 1
+        position = int(input('Invalid input, please choose a position from 1 to 9: ')) - 1
 
     if board[position] != '-':
         print("The cell is already used")
     else:
         board[position] = current_player
-    display_board()  # Update the board with a new sign (X or O)
+    display_board()  # Update the board with a new player (O or X)
 
 
 def check_game_over():
     check_win()
     check_tie()
 
-
+# Flip player's turn from O to X and vice-versa.
 def flip_player():
     global current_player
     if current_player == 'X':
@@ -65,7 +66,7 @@ def check_win():
 
 
 def check_rows():
-    # Set up the global variables
+    # Set up the global variables.
     global game_running
 
     # Check if any of the rows have all the same values (and is not empty)
@@ -147,5 +148,5 @@ def play_game():
         print('This is a tie!')
 
 
-# Start playing the game
+# Start playing the game.
 play_game()
